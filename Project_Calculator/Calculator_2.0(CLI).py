@@ -24,6 +24,7 @@ while True:
             num_log = new_num
         else:
             _sign = value_2 # If the third input value isn't number,
+            print("Entered :", num_log, _sign)
             value_2 = input("Enter : ") # initializing sign value and input again.
             num_2 = int(value_2) # Changing...
             new_num = Arithmetic(num_1, _sign, num_2) # Running...
