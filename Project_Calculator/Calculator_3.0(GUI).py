@@ -12,36 +12,48 @@ GAP = 10
 ROW = 1
 COL = 0
 NUM = []
-PUSH_RESULT = "".join(NUM)
+PUSH_RESULT = 0
+
+def Push(i):
+    global PUSH_RESULT
+    if i in NUM_CHECK:
+        NUM.append(i)
+        PUSH_RESULT = "".join(NUM)
+    elif i in SIGN_CHECK:
+        pass
+    elif i == '=':
+        pass
 
 master = tkinter.Tk()
 master.title('Calculator')
 result = tkinter.Label(
     master,
-    text = PUSH_RESULT,
-    width = BUTTON_SIZE * 5,
-    heigh = BUTTON_SIZE // 2 + 1,
-    borderwidth = 1,
-    relief = 'sunken',
-    background = 'lightgreen',
-    padx = GAP,
-    anchor = 'e'
+    text=PUSH_RESULT,
+    width=BUTTON_SIZE * 5,
+    heigh=BUTTON_SIZE // 2 + 1,
+    borderwidth=1,
+    relief='sunken',
+    background='lightgreen',
+    padx=GAP,
+    anchor='e'
 )
-result.grid(row = 0, column = 0, columnspan = 4)
+result.grid(row=0, column=0, columnspan=4)
 
 for i in CAL_BUTTON:
+    PushI = Push(i)
     tkinter.Button(
         master,
-        text = i,
-        width = BUTTON_SIZE,
-        height = BUTTON_SIZE // 2,
-        # command = Push
+        text=i,
+        width=BUTTON_SIZE,
+        height=BUTTON_SIZE // 2,
+        command=PushI
     ).grid(
-        row = ROW,
-        column = COL
+        row=ROW,
+        column=COL
     )
     COL += 1
     if COL > 3:
         COL = 0
         ROW += 1
+
 tkinter.mainloop()
